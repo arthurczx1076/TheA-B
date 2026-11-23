@@ -1,0 +1,59 @@
+THE HISTORY A&B
+===============
+
+COMO ABRIR
+  - Duplo clique em index.html (agora funciona direto no Chrome), ou
+  - VS Code -> botao direito em index.html -> "Open with Live Server".
+
+ARQUIVOS
+  index.html  pagina | style.css  visual | script.js  funcionamento
+  config.js   (opcional) chaves da nuvem | nuvem-supabase.sql  cria o banco na nuvem
+  fonts/ images/  fontes e fotos de exemplo
+
+--------------------------------------------------------------------------
+USAR NO CELULAR E NO COMPUTADOR, SEM ARQUIVOS .ZIP  (nuvem gratuita: Supabase)
+--------------------------------------------------------------------------
+Sem isso, o site guarda tudo so no navegador onde foi aberto. Com isso, suas memorias
+ficam na SUA conta e aparecem em qualquer aparelho. Faca uma vez (uns 10 minutos):
+
+ 1) Crie uma conta gratuita em https://supabase.com e clique em "New project".
+    Escolha um nome, defina uma senha do banco (guarde) e a regiao "South America (Sao Paulo)".
+ 2) No projeto, abra "SQL Editor" -> "New query", cole TODO o conteudo de
+    nuvem-supabase.sql e clique em "Run". (Cria a tabela e a pasta privada de fotos/videos.)
+ 3) Abra "Authentication" -> "Sign In / Providers" -> "Email" e DESLIGUE "Confirm email".
+    (Assim voce cria a conta e entra na hora, sem precisar de link no e-mail.)
+ 4) Abra "Project Settings" -> "API" (ou "API Keys") e copie:
+      - Project URL            (ex.: https://abcdxyz.supabase.co)
+      - a chave "anon" / "publishable"
+    Cole as duas em config.js, entre as aspas, e salve.
+ 5) Publique o site (Netlify) com o config.js preenchido. Abra o endereco no computador
+    E no celular, escolha "Primeiro acesso - Criar conta" (nome, e-mail, senha) no primeiro
+    aparelho e use "Entrar" no outro. Pronto: o que voce salvar em um aparece no outro.
+
+COMO FUNCIONA
+  - O site continua funcionando sem internet; ao salvar, envia para a nuvem. Se estiver
+    sem conexao, avisa e reenvia sozinho quando voltar. Ao abrir o site ou voltar para a
+    aba, ele busca as novidades. Se editar nos dois aparelhos ao mesmo tempo, vale a ultima
+    alteracao salva.
+  - Cada conta so enxerga as proprias memorias (protecao no banco, criada pelo .sql).
+  - A chave do config.js pode ficar publica: ela so funciona junto com essa protecao.
+  - Esqueceu a senha? Em Supabase: Authentication -> Users -> abra o usuario -> redefinir.
+
+LIMITES DO PLANO GRATUITO (conferidos em nov/2026)
+  - 1 GB de fotos e videos no total; ate 50 MB por arquivo (por isso o limite de video e 50 MB).
+  - 500 MB de banco (de sobra para textos); 5 GB de trafego por mes.
+  - ATENCAO: projetos gratuitos sao PAUSADOS apos 1 semana sem nenhum uso. Abrir o site ao
+    menos uma vez por semana evita isso. Se pausar, entre no painel do Supabase e clique em
+    "Restore project". Para nao depender disso, existe o plano pago (a partir de US$ 25/mes).
+  - Faca de vez em quando "Dados e backup -> Baixar backup" como copia extra.
+
+--------------------------------------------------------------------------
+OUTRAS FORMAS DE GUARDAR (sem nuvem)
+--------------------------------------------------------------------------
+  - Pasta do projeto (Chrome/Edge no computador): "Dados e backup" -> "Escolher pasta".
+    Cria dados/memorias.json e dados/midia/. NAO publique a pasta dados/ (fotos ficariam publicas).
+  - Backup em arquivo: "Dados e backup" -> "Baixar backup" (.zip) / "Restaurar backup".
+
+PUBLICAR NO NETLIFY PELO GITHUB (sem build)
+  Envie o conteudo da pasta para um repositorio; no Netlify: Import from Git, Build command
+  VAZIO, Publish directory ".". O .gitignore ja deixa a pasta dados/ de fora.
